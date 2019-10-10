@@ -1009,14 +1009,16 @@ function getWords() {
 	var tbl = document.querySelector("#wordsTable");
 	var wordsTitle = document.querySelector("#wordsTitle");
 	var rowNum = 10;
+	var numWords = 4;
 	var wordsList = words.split("\n");
-	if (parseInt(minWordLength, 10) <= parseInt(maxWordLength, 10) && parseInt(minWordLength, 10) < parseInt(pwLength, 10)) {
+	if (parseInt(minWordLength, 10) <= parseInt(maxWordLength, 10) && parseInt(minWordLength, 10) < parseInt(pwLength, 10)
+		&& parseInt(minWordLength * numWords, 10) <= parseInt(pwLength, 10) && parseInt(maxWordLength * numWords, 10) <= parseInt(pwLength, 10)) {
 		tbl.innerHTML = "";
 		for (var i = 0; i < rowNum; i++) {
 			var totalWordLength = 0;
 			var tr = document.createElement("tr");
 			var wordCount = 0;
-			while (wordCount < 4) {
+			while (wordCount < numWords) {
 				var correctWord = false;
 				var correctEasyWord = false;
 				var td = document.createElement("td");
@@ -1086,5 +1088,7 @@ function getWords() {
 		alert("Error: Minimum word length should not exceed maximum word length.");
 	} else if (parseInt(pwLength, 10) < parseInt(minWordLength, 10)) {
 		alert("Error: Mininum word length should not exceed maximum password length.");
+	} else {
+		alert("Error: Table must be able to display four words with the given word lengths. Please increase maximium password length.");
 	}
 }
