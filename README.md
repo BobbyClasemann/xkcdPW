@@ -1,2 +1,3 @@
-# xkcdPW
-# xkcdPW
+---
+permalink: /index.html
+---
